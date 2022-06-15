@@ -1,0 +1,27 @@
+.main-header-container {
+    background-color: var(--primary);
+    color: var(--text-color-light);
+    padding: 0 1em;
+    margin-bottom: 2em;
+  }
+  
+  .main-header-container a {
+    color: var(--text-color-light)
+  }
+  
+  main-header .main-nav>* {
+    font-weight: bold;
+    cursor: pointer;
+    /*download-font*/
+  
+  }
+  
+  .main-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+  }
+  
+  

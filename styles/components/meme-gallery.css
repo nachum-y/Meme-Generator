@@ -1,0 +1,12 @@
+.meme-gallery {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.meme-gallery img:hover {
+  transform: scale(1.05) ;
+    /* display: none;≥ */
+}
+
+.meme-gallery img{
+    cursor: pointer;
+}

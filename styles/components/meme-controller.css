@@ -1,0 +1,23 @@
+.meme-controller {
+    flex-grow: 1;
+    margin-inline-start: 1em;
+}
+
+.top-controller {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid;
+}
+
+.main-meme{
+    display: flex;
+}
+
+.controller{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.input-txt{
+    grid-column: 1/-1;
+}
