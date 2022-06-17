@@ -2,130 +2,107 @@
 var gCanvas
 var gColor
 var gCtx
+var gCurrLineIdx
+var gImg
+var gStartPos
 
 function setCanvas(meme) {
     gCanvas = document.getElementById('canvas')
     gCtx = gCanvas.getContext('2d')
-    renderCanvas()
-}
-function renderCanvas() {
-    var meme = getMeme()
-    const image = getImgById(meme.selectedImgId)
-    var img = new Image()//create a new html img element
-    img.src = image.src//send a network req to get that image, define the img src
-    // when the image ready draw it on the canvas
-    img.onload = () => {
-        var hieghtImg = img.height
-        var widthImg = img.width
-        setCanvasSize(hieghtImg, widthImg)
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        meme.lines.forEach(meme => {
-            drawText(meme)
+    let windowWidth = window.innerWidth
 
-        })
-        // drawText(meme, meme.lines[0].pos.x, meme.lines[0].pos.y)
+    if (windowWidth <= 1100 && windowWidth >= 750) tabTogalText()
+    if (meme.lines[0].pos.x === -100) {
+        var skipLines = true
     }
+    const image = getImgById(meme.selectedImgId)
+    gImg = new Image()//create a new html img element
+    gImg.src = image.src//send a network req to get that image, define the img src
+    gImg.onload = () => {
+        let { offsetWidth, offsetHeight } = getOffsetSize()
+        if (offsetWidth / offsetHeight <= 1) {
+            gCanvas.width = offsetWidth - 400
+            gCanvas.height = gCanvas.width
 
+
+        } else {
+            gCanvas.width = offsetHeight - 100
+            gCanvas.height = gCanvas.width
+
+        }
+        setCanvasSize(gCanvas.width, gCanvas.height)
+        console.log(meme)
+        if (skipLines) {
+            meme.lines[0].pos.x = gCanvas.width / 2
+            meme.lines[0].pos.y = gCanvas.height / 2
+        }
+        renderCanvas(gImg)
+    }
     addListeners()
-
-    // drawImg(image, meme)
-    // drawText(meme)
-
-    let canvasWidth = gCanvas.width
-    let canvasHeight = gCanvas.height
-
 }
 
 
-// function drawImg(image, meme) {
-
-//     var img = new Image()//create a new html img element
-//     img.src = image.src//send a network req to get that image, define the img src
-//     //when the image ready draw it on the canvas
-//     img.onload = () => {
-//         var hieghtImg = img.height
-//         var widthImg = img.width
-//         setCanvasSize(hieghtImg, widthImg)
-//         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-//         setElementCenter()
-//         drawText(meme, hieghtImg / 2, widthImg / 2)
-//     }
-// }
-
-function setCanvasSize(hieght, width) {
-    gCanvas.height = hieght
-    gCanvas.width = width
-}
-
-
-//Handle the listeners
-function addListeners() {
-    addMouseListeners()
-    addTouchListeners()
-    window.addEventListener('resize', () => {
-        resizeCanvas()
+function renderCanvas(img = gImg) {
+    var meme = getMeme()
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+    meme.lines.forEach(meme => {
+        gCtx.textAlign = 'center'
+        drawText(meme)
     })
-    //Listen for resize ev 
-    // window.addEventListener('resize', () => {
-    //     resizeCanvas()
-    //     renderCanvas()
-    // })
+    gCtx.save()
+
 }
 
-function addMouseListeners() {
-    gCanvas.addEventListener('mousemove', onMove)
-    gCanvas.addEventListener('mousedown', onDown)
-    gCanvas.addEventListener('mouseup', onUp)
-}
 
-function addTouchListeners() {
-    gCanvas.addEventListener('touchmove', onMove)
-    gCanvas.addEventListener('touchstart', onDown)
-    gCanvas.addEventListener('touchend', onUp)
-}
+
+// drawImg(image, meme)
+// drawText(meme)
+
+// let canvasWidth = gCanvas.width
+// let canvasHeight = gCanvas.height
+
+
+
+
 
 function onDown(ev) {
 
     const pos = getEvPos(ev)
     var meme = getMeme()
+    hideBorderElement()
+    meme.lines.forEach(meme => meme.isSelected = false)
     var isDrag = false
     var { isDrag, idLine } = isMouseOnElement(pos)
     if (!isDrag) return
-    console.log(idLine)
-    // meme.lines[idx].isDrag = true
-    console.log('meme.lines[idLine]:', meme.lines[idLine])
-    meme.lines[idLine].isDrag = true
-    // gCtx.beginPath()
-    // gCtx.moveTo(pos.x, pos.y)
 
-    //Get the ev pos from mouse or touch
-    //Save the pos we start from 
-    // gStartPos = pos
-    document.body.style.cursor = 'text'
-    // console.log('onDown(ev):', ev)
+    // document.body.style.cursor = 'text'
+
+
 }
+
 function onMove(ev) {
     const meme = getMeme()
-    var curMeme = meme.lines.find(meme => 
-       meme.isDrag === true
+    var curMeme = meme.lines.find(meme =>
+        meme.isDrag === true
     )
-    console.log(curMeme);
-    if (curMeme) {
-        console.log(curMeme)
-        const pos = getEvPos(ev)
-        // console.log(ev);
-        //Calc the delta , the diff we moved
-        const dx = pos.x
-        const dy = pos.y
-        moveShape(curMeme, dx, dy)
-        // console.log(' moveShape(dx, dy):', moveShape(dx, dy))
-        // drawText(shape,dx, dy)
-        // drawText('HOLA!', dx,dy)
-        //Save the last pos , we remember where we`ve been and move accordingly
-        var gStartPos = pos
-        //The canvas is render again after every move
+    if (!curMeme) return
+    const pos = getEvPos(ev)
+    const dx = pos.x
+    const dy = pos.y
+    if (curMeme.isScaled) {
+        resizeDrageElement(curMeme, dx, dy)
+        renderCanvas()
+        return
     }
-    // console.log('onMove(ev):', ev)
+
+    if (curMeme) {
+        setSquareAroundElement(curMeme)
+
+
+        moveShape(curMeme, dx, dy)
+
+        var gStartPos = pos
+    }
 }
 
 function onUp() {
@@ -133,115 +110,177 @@ function onUp() {
     document.body.style.cursor = 'default'
 }
 
-function setLineDrag(isDrag) {
-    var meme = getMeme()
-    var curMeme = meme.lines.find(meme => {
-        return meme.isDrag
-    })
-    if (curMeme) curMeme.isDrag = isDrag
-
-    console.log(curMeme)
-    //
-}
-function moveShape(meme, x, y) {
-    console.log(meme)
-    meme.pos.x = x
-    meme.pos.y = y
-    renderCanvas()
-    // gCtx.clearRect(shapeLeft, shapTop, meme.lines[0].pos.width, meme.lines[0].pos.height)
-}
-
-
-
-function getEvPos(ev) {
-
-    //Gets the offset pos , the default pos
-    var pos = {
-        x: ev.offsetX,
-        y: ev.offsetY
-    }
-    // Check if its a touch ev
-    // if (gTouchEvs.includes(ev.type)) {
-    //     //soo we will not trigger the mouse ev
-    //     ev.preventDefault()
-    //     //Gets the first touch point
-    //     ev = ev.changedTouches[0]
-    //     //Calc the right pos according to the touch screen
-    //     pos = {
-    //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-    //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
-    //     }
-    // }
-    return pos
-}
-
-
-
-function drawText(meme) {
-    console.log(meme)
-    var x = meme.pos.x
-    var y = meme.pos.y
-    console.log(y)
-    gCtx.lineWidth = 1
-
-    // gCtx.strokeStyle = 'brown'
-    var txt = meme.txt
-    var txtHeight = meme.size
-    gCtx.fillStyle = meme.color
-    gCtx.font = `${meme.size}px Ariel`
-    var txtWidth = gCtx.measureText(txt).width
-    var txtHeight = parseInt(gCtx.font)
-    console.log(txtHeight, '1')
-    gCtx.fillText(txt, x - txtWidth / 2, y)//Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(txt, x - txtWidth / 2, y)//Draws (strokes) a given text at the given (x, y) position.
-    gCtx.fillStyle = 'blue'
-    gCtx.strokeStyle = 'red'
-    var fillRect = false
-    meme.pos.x = x - txtWidth / 2
-    meme.pos.y = y - txtHeight
-    meme.pos.width = txtWidth
-    meme.pos.height = txtHeight
-
-    gCtx.rect(x - txtWidth / 2 - txtHeight / 2, y - txtHeight, txtWidth + txtHeight, txtHeight * 1.4)
-    if (fillRect) {
-        gCtx.fill()
-    }
-    gCtx.stroke()
-
-}
-
-
-
-
-
-
 
 function isMouseOnElement({ x, y }) {
-    console.log(x)
-    console.log(y)
     var meme = getMeme()
     var isDrag = false
     var idLine = null
 
+    let elTxtInput = document.querySelector('.input-txt')
+    elTxtInput.value = ''
     meme.lines.forEach((meme, idx) => {
-        var shapeLeft = meme.pos.x
+        var shapeLeft = meme.pos.x - meme.pos.width / 2
         var shapeRight = shapeLeft + meme.pos.width
-        var shapTop = meme.pos.y
-        var shapBottom = shapTop + meme.pos.height
+        var shapTop = meme.pos.y - meme.pos.height
+        var shapBottom = meme.pos.y
 
-        // console.log('shapeLeft:', shapeLeft)
-        // console.log('shapeRight:', shapeRight)
-        // console.log('shapTop:', shapTop)
-        // console.log('shapBottom:', shapBottom)
-        if (x > shapeLeft && x < shapeRight && y > shapTop && y < shapBottom) {
+
+        if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
 
             // meme.isDrag = true
             isDrag = true
             idLine = idx
+            meme.isDrag = true
+            setSquareAroundElement(meme)
+            setTextinput(meme, elTxtInput)
+            meme.isSelected = true
+            if (shapeRight <= x && shapBottom <= y) {
+                meme.isScaled = true
+                // resizeDrageElement()
+                // elSquareAround.style.top = `${meme.pos.y - meme.pos.height}px`
+                // elSquareAround.style.left = `${meme.pos.x - meme.pos.width / 2}px`
+                // elSquareAround.style.width = `${meme.pos.width + meme.size}px`
+                // elSquareAround.style.height = `${meme.pos.height + meme.size / 2}px`
+                // elSquareAround.style.transform = `translate(${-meme.size / 2}px, 0px)`
+            }
         }
 
     })
 
     return ({ isDrag, idLine })
+
+}
+
+
+
+function onTextChange(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.txt = el.value
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+
+}
+
+function onColorChange(el) {
+    // el.value = el.color
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.color = el.value
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
+
+function onEnlargeElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.size += 1
+    updateTopEditPanel(selectedMeme)
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+
+}
+
+function onReduceElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    if (selectedMeme.size <= 5) return
+    selectedMeme.size -= 1
+    updateTopEditPanel(selectedMeme)
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+
+}
+
+
+function onRemoveElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.txt = ''
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
+
+
+function onlineUpElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.pos.y = 0 + selectedMeme.pos.height
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+
+}
+
+function onlineDownElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.pos.y = gCanvas.height
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+
+}
+
+
+function onAlignRightElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    console.log(selectedMeme)
+    selectedMeme.pos.x = gCanvas.width - selectedMeme.pos.width / 2 - selectedMeme.size
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
+
+function onAlignLeftElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.pos.x = 0 + selectedMeme.pos.width / 2 + selectedMeme.size
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
+
+
+function onAlignCenterElement(el) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.pos.x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
+
+
+
+function onAddElement(el, size, stroke) {
+    let selectedMeme = getSelectedMeme()
+    if (selectedMeme) {
+        selectedMeme.isSelected = false
+        setSquareAroundElement(selectedMeme)
+    }
+
+    let txt = el.innerText
+    let newLine = setNewElementLine(txt, size, stroke)
+    newLine.isSelected = true
+    updateTopEditPanel(newLine)
+    // setSquareAroundElement(newLine)
+    renderCanvas()
+
+
+
+}
+
+
+function onResizeElement() {
+    console.log('onResizeElement')
+    alert('woww')
+}
+
+
+
+function onTxtStroke() {
+    let selectedMeme = getSelectedMeme()
+    if (selectedMeme) {
+        selectedMeme.stroke = selectedMeme.stroke === 1 ? 2 : 1
+        setSquareAroundElement(selectedMeme)
+    }
+    renderCanvas()
 
 }

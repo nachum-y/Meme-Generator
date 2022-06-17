@@ -9,15 +9,4 @@
     border-bottom: 1px solid;
 }
 
-.main-meme{
-    display: flex;
-}
 
-.controller{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-}
-
-.input-txt{
-    grid-column: 1/-1;
-}

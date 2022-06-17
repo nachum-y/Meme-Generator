@@ -1,87 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
     <!-- FontAwesome -->
-<script src="https://kit.fontawesome.com/0184733c35.js" crossorigin="anonymous"></script>
-<!-- ----FontAwesome---- -->
+    <script src="https://kit.fontawesome.com/0184733c35.js" crossorigin="anonymous"></script>
+    <!-- ----FontAwesome---- -->
     <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body onload="init()">
-    <header class="main-header-container">
-        <div class="main-header main-layout flex align-center space-between">
-            <div class="main-logo">MG</div>
-            <ul class="main-nav clean-list flex">
-                <li class="active"> <a href="#">Most Popular</a></li>
-                <li><a href="#">Funny</a></li>
-                <li><a href="#">Animals</a></li>
-                <li><a href="#">Peoples</a></li>
-            </ul>
-            <div class="dropdown">
 
-                <button class="flex language-dropdown-toggle"><img src="static/flags/Eng.svg" class="lang-flag"
-                        alt="flag">en</button>
-                <div class="dropdown-content">
-                    <a href="#"><img src="static/flags/Heb.svg" class="lang-flag" alt="flag">he</button></a>
+
+    <div class="grid-layout-page">
+
+
+
+        <header class="main-header-layout">
+            <div class="main-header-container flex align-center space-between">
+                <div class="main-logo">MG</div>
+                <div class="dropdown">
+
+                    <button class="flex language-dropdown-toggle"><img src="static/flags/Eng.svg" class="lang-flag"
+                            alt="flag">en</button>
+                    <div class="dropdown-content">
+                        <a href="#"><img src="static/flags/Heb.svg" class="lang-flag" alt="flag">he</button></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="top-nav-edit">
+            </div>
+        </header>
+
+
+        <div class="main-container clos2e">
+
+            <div class="hero-content ">
+                <h2>What meme will you design?</h2>
+                <div class="search-input">
+                    <input oninput="onSetFilterByTxt(this.value)" type="search"
+                        placeholder="Search your kewwords or meme's" value="" name="search-meme"
+                        class="search-meme-input">
+                    <span><span aria-hidden="true" class="search-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M15.2 16.34a7.5 7.5 0 1 1 1.38-1.45l4.2 4.2a1 1 0 1 1-1.42 1.41l-4.16-4.16zm-4.7.16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
+                                </path>
+                            </svg></span></span>
+                </div>
+                <div class="popular-searches">
+                    <span class="funny">Funny</span>
+                    <span class="animals">Animals</span>
+                    <span class="peoples">Peoples</span>
+                    <span class="akward">Akward</span>
+                    <span class="tv-show">TV Show</span>
+                </div>
+
+            </div>
+
+            <main class="main-content">
+
+            </main>
+
+        </div>
+
+
+        <div class="sidebar-nav close">
+
+            <nav class="sidebar-navigation">
+                <ul>
+                    <li onclick="renderImagesGallery()" class="all-memes-tab">
+                        <span class="list-title">All memes</span>
+                       
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M19.5 10V5a.5.5 0 0 0-.5-.5h-4.5V10h5zm0 1.5h-5v8H19a.5.5 0 0 0 .5-.5v-7.5zm-6.5-7H5a.5.5 0 0 0-.5.5v14c0 .28.22.5.5.5h8v-15zM5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2z">
+                                </path>
+                            </svg>
+                        </i>
+                    </li>
+                    <li onclick="tabTogalText(this)" class="active meme-page-tab">
+                        <span class="list-title">Text</span>
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M18 5.5h-5.25V18c0 .28.22.5.5.5h2a.75.75 0 1 1 0 1.5h-6.5a.75.75 0 1 1 0-1.5h2a.5.5 0 0 0 .5-.5V5.5H6a.5.5 0 0 0-.5.5v1.25a.75.75 0 0 1-1.5 0V5.5C4 4.67 4.67 4 5.5 4h13c.83 0 1.5.67 1.5 1.5v1.75a.75.75 0 1 1-1.5 0V6a.5.5 0 0 0-.5-.5z">
+                                </path>
+                            </svg>
+                        </i>
+                    </li>
+                    <li>
+                        <span class="list-title">projects</span>
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                width="24" height="24" viewBox="0 0 24 24">
+                                <defs>
+                                    <path id="_775853201__a"
+                                        d="M13 7h7c1.1 0 2 .83 2 1.86v9.28c0 1.03-.9 1.86-2 1.86H4c-1.1 0-2-.83-2-1.86V8.86c0-.14.02-.28.05-.42A2 2 0 0 1 2 8V6c0-1.1.9-2 2-2h6.56a2 2 0 0 1 1.9 1.37L13 7zm-1.58 0-.39-1.16a.5.5 0 0 0-.47-.34H4a.5.5 0 0 0-.5.5v1.06c.16-.04.33-.06.5-.06h7.42zM4 8.5c-.3 0-.5.19-.5.36v9.28c0 .17.2.36.5.36h16c.3 0 .5-.19.5-.36V8.86c0-.17-.2-.36-.5-.36H4z">
+                                    </path>
+                                </defs>
+                                <use fill="currentColor" fill-rule="nonzero" xlink:href="#_775853201__a"></use>
+                            </svg>
+                        </i>
+                       
+                    </li>
+                    <li>
+                        <span class="list-title">Uploud</span>
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        
+                    </li>
+                    <li>
+                        <span class="list-title">Settings</span>
+                        <i class="fa fa-sliders"></i>
+                    
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-navigation-content">
+                <div class="tab-content">
+                    <label class="text-input-container" for="text-input">
+                        <strong class="tab-content-title">Edit text</strong>
+                        <!-- <input class="text-input" type="text"> -->
+                        <input type="text" placeholder="Text Here" class="input-txt" id="input-txt-selected"
+                            oninput="onTextChange(this)">
+                    </label>
+                    <strong class="tab-content-title">Click text to add to page</strong>
+                    <div onclick="onAddElement(this,60,2)" class="add-a-heading">Add a heading</div>
+                    <div onclick="onAddElement(this,40,1)" class="add-a-subheading">Add a subheading</div>
+                    <div onclick="onAddElement(this,20,1)" class="add-a-little-text">Add a little bit of body text</div>
                 </div>
             </div>
         </div>
 
-    </header>
 
+        <!-- /end sidenavbar -->
+        <div class="top-nav-e2dit">
+            <!--             
+            <div class="controller-top-bar">
+                <div class="grid-controller">
+                    <div class="font-selctor ">
+                        <select>
+                            <option>Impact</option>
+                            <option>No external background image</option>
+                            <option>No wrapper</option>
+                        </select>
+                    </div>
+                    <div class="size-selecor">
+                        <div onclick="onEnlargeElement(this)" class="btn-controller enlarge-element size-btn"><i
+                                class="fa-solid fa-plus"></i></div>
+                        <span><input class="font-size-selector" type="number" value="16"></span>
+                        <div onclick="onReduceElement(this)" class="btn-controller reduce-element size-btn"><i
+                                class="fa-solid fa-minus"></i></div>
+                    </div>
+                    <div class="btn-controller txt-stroke"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor" fill-rule="evenodd"
+                            d="M7.08 4.72h4.44c2.03 0 3.5.3 4.41.87.92.57 1.37 1.49 1.37 2.75 0 .85-.2 1.55-.6 2.1-.4.54-.93.87-1.6.98v.1c.91.2 1.56.58 1.96 1.13.4.56.6 1.3.6 2.2 0 1.31-.47 2.33-1.4 3.06A6.1 6.1 0 0 1 12.41 19H7.08V4.72zm3.03 5.66h1.75c.82 0 1.42-.13 1.79-.38.36-.26.55-.68.55-1.26 0-.55-.2-.94-.6-1.18a3.86 3.86 0 0 0-1.9-.36h-1.6v3.18zm0 2.4v3.72h1.97c.83 0 1.45-.16 1.84-.48.4-.32.6-.8.6-1.46 0-1.19-.85-1.78-2.54-1.78h-1.87z">
+                        </path>
+                    </svg></div>
+                    <div class="selcet-line-up-down">
 
-
-
-    <main class="main-content main-layout">
-        <div class="main-img-gallery main-layout">
-            <!-- <article>
-                <img src="/images/placeholder.png" alt="">
-                <span class="cat-"></span>
-            </article>
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt="">
-            <img src="/images/placeholder.png" alt=""> -->
+                        <div onclick="onlineUpElement(this)" class="btn-controller line-up"><i
+                                class="fa-solid fa-up-long"></i></div>
+                        <div onclick="onlineDownElement(this)" class="btn-controller line-down"><i
+                                class="fa-solid fa-arrow-down-long"></i></div>
+                    </div>
+                    <div onclick="onAddElement(this)" class="btn-controller add-txt"><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="align-element">
+                        <div onclick="onAlignLeftElement(this)" class="btn-controller txt-align-left"><i
+                                class="fa-solid fa-align-left"></i></div>
+                        <div onclick="onAlignCenterElement(this)" class="btn-controller txt-align-center"><i
+                                class="fa-solid fa-align-justify"></i></div>
+                        <div onclick="onAlignRightElement(this)" class="btn-controller txt-align-right"><i
+                                class="fa-solid fa-align-right"></i></div>
+                    </div>
+                    <div onclick="colorPickerClick()" class="color-picker">
+                        <input id="font-color-button" type="color" id="pick-color" name="pick-color" style="display:none;" value="#e66465" oninput="onColorChange(this)">
+                        <div class="a-color">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 2 5.5 16h2.25l1.12-3h6.25l1.12 3h2.25L13 2h-2zm-1.38 9L12 4.67 14.38 11H9.62z" fill="currentColor"></path></svg>
+                        </div>
+                            <div class="color-picker-under"></div>
+                    </div>
+              
+                    <div onclick="onRemoveElement(this)" class="btn-controller remove-element"><i
+                            class="fa-solid fa-trash-can"></i></div>
+                </div> -->
         </div>
-    </main>
-    <!-- <span class="measure-text">"TAP HERE FOR EDIT TEXT"</span> -->
-    <footer class="main-footer main-layout">
-        <div>TEXT</div>
-        <small>text small</small>
-    </footer>
+    </div>
 
-
+    </div>
     <script src="js/main.js"></script>
     <!-- services -->
     <script src="js/services/util.service.js"></script>
@@ -95,8 +209,10 @@
     <script src="js/controller/meme.controller.js"></script>
     <script src="js/controller/canvas.controller.js"></script>
 
+
 </body>
 
 </html>
+
 </html>
 </body>

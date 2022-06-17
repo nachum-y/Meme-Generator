@@ -12,6 +12,7 @@
 
 
 /* COMPONENTS */
+@import 'components/page-layout.css';
 @import 'components/main-header.css';
 @import 'components/main-content.css';
 @import 'components/meme-gallery.css';
@@ -20,6 +21,10 @@
 @import 'components/page-navigation.css';
 @import 'components/screen.css';
 @import 'components/main-footer.css';
+@import 'components/side-nav.css';
+@import 'components/hero-content.css';
+@import 'components/side-nav-content.css';
+@import 'components/controller-top-bar.css';
 
 /* Media Queries */
 @import 'mq/mq.css';
