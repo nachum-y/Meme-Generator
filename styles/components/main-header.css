@@ -7,7 +7,8 @@
   padding: 0 2em;
 
 }
-.main-header-layout{
+
+.main-header-layout {
   position: sticky;
   top: 0;
   width: 100%;
@@ -42,4 +43,11 @@
   align-items: center;
   width: 100px;
   /* height: 4em; */
+  font-family: Pacifico;
+  font-size: 2em;
+  background: -webkit-linear-gradient(#FFDDD2, #83C5BE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
 }
+

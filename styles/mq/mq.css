@@ -167,6 +167,11 @@
         max-height: 6.7em;
         overflow-y: scroll;
     }
+
+    .main-logo{
+        font-size: 1.5em;
+
+    }
 }
 
 

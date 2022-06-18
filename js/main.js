@@ -47,7 +47,6 @@ function setActiveSideBar(page) {
         elMainContainer.classList.remove('minimize-side-bar')
         elSideBar.classList.remove('nav-home-page')
         elMainContainer.classList.add('meme-page')
-        elMainContainer.classList.add('minimize-side-bar')
         
 
     }
