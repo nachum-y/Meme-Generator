@@ -131,7 +131,14 @@ function addImage(imgSrc, category) {
 }
 
 
+function setSearchKeyWord(keyWord){
+    let elSearchInput = document.querySelector('.search-meme-input')
+    console.log(elSearchInput);
+    elSearchInput.value = keyWord
+    onSetFilterByTxt(keyWord)
 
+
+}
 
 
 function _ctrateImage(category, idImg) {

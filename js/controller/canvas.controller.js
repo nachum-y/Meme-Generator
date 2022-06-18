@@ -276,10 +276,6 @@ function onAddElement(el, size, stroke) {
 }
 
 
-function onResizeElement() {
-    console.log('onResizeElement')
-    alert('woww')
-}
 
 
 

@@ -55,3 +55,13 @@
 .animals{
     font-size: 1.5em;
 }
+
+.popular-searches a{
+    color: #fff;
+    transition: transform 0.1s;
+
+}
+
+.popular-searches a:hover{
+    transform: scale(1.05);
+}
