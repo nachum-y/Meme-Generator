@@ -14,13 +14,6 @@
         top: 3em;
     }
 
-    .sidebar-nav {
-        position: fixed;
-
-        bottom: 0;
-        left: 0;
-        z-index: 20;
-    }
 
     .sidebar-navigation {
 
@@ -45,12 +38,17 @@
         position: fixed;
         left: 0;
         width: 100%;
-        z-index: 20;
         bottom: 0;
         min-height: 4rem;
         height: 4rem;
+        z-index: 100;
     }
 
+    .main-container.meme-page.minimize-side-bar{
+        top: 0;
+        z-index: 0;
+    }
+    
 
     .sidebar-navigation ul {
         text-align: center;
@@ -70,6 +68,7 @@
     .hero-content {
         padding: 1em 2em;
         margin-bottom: 4em;
+        margin-top: 7em;
     }
 
 
@@ -129,11 +128,12 @@
     }
 
     .main-container.minimize-side-bar {
-        top: 0;
+        bottom: 4em;
     }
 
-    .main-container {
-        top: -4em;
+    .main-container.meme-page {
+        top: -8em;
+        z-index: 50;
     }
 
 
@@ -145,6 +145,7 @@
         margin: auto;
         position: relative;
         left: auto;
+
 
     }
 
@@ -162,7 +163,7 @@
     }
 
 
-    .elements{
+    .elements {
         max-height: 6.7em;
         overflow-y: scroll;
     }
@@ -215,20 +216,20 @@
     }
 }
 
-    /* MEDIUM */
-    @media (min-width: 840px) {}
+/* MEDIUM */
+@media (min-width: 840px) {}
 
-    /* LARGE */
-    @media (min-width: 1100px) {
-        .top-nav-edit {
-            left: 390px;
-        }
-
-        .sidebar-nav {
-            top: 4rem;
-        }
-
-        .controller-top-bar {
-            width: calc(100% - 420px);
-        }
+/* LARGE */
+@media (min-width: 1100px) {
+    .top-nav-edit {
+        left: 390px;
     }
+
+    .sidebar-nav {
+        top: 4rem;
+    }
+
+    .controller-top-bar {
+        width: calc(100% - 420px);
+    }
+}

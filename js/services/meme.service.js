@@ -43,7 +43,6 @@ function getMeme() {
 
 function _crateNewMeme(memeId) {
     let isMemeExist = gMeme.find(meme => meme.selectedImgId === memeId)
-    console.log(isMemeExist);
     if(isMemeExist) return
     let newMeme = {
 

@@ -30,3 +30,11 @@
     background-color: aliceblue;
     padding: 0.2em 0.4em;
 }
+
+.sidebar-nav.nav-home-page{
+    display: none;
+}
+
+.main-container.close{
+    left: 0;
+}

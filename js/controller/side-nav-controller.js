@@ -2,7 +2,6 @@
 
 
 function onSideNavTabClick(el) {
-    console.log(el)
 
 
     let elSideBarContent = document.querySelector('.sidebar-navigation-content')
@@ -39,7 +38,6 @@ function renderSideNavContent(el) {
         elContent.classList.add('hide')
     }
     if (elText.innerText === 'Share') {
-        console.log('shhh');
         elContentMain.classList.add('hide')
         elContent.classList.remove('hide')
         strHtmls = getHtmls('Share')
@@ -49,9 +47,6 @@ function renderSideNavContent(el) {
         elContent.classList.remove('hide')
         strHtmls = getHtmls('Elements')
     }
-
-
-    console.log(strHtmls)
 
     elContent.innerHTML = strHtmls
 

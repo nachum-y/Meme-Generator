@@ -31,5 +31,4 @@ function getMeta(url, callback) {
     img.src = url
 
     img.onload = function () { (this.width, this.height) }
-    console.log(img.onload);
 }

@@ -1,7 +1,6 @@
 'use strict'
 
 function getHtmls(el) {
-    console.log(el)
     
     let elBack
     switch (el) {

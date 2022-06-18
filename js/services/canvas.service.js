@@ -6,7 +6,6 @@ function setCanvasSize(hieght, width) {
     gCanvas.width = width
 }
 
-//Handle the listeners
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
@@ -208,7 +207,6 @@ function setNewElementLine(txt, size, stroke) {
 
 function setNewElementSticker(img, x, y) {
     let meme = getMeme()
-    console.log(img)
     let newElemenet = {
         img,
         size: 50,
@@ -221,7 +219,6 @@ function setNewElementSticker(img, x, y) {
     }
 
     meme.elements.push(newElemenet)
-    console.log(meme)
     return meme.elements[meme.elements.length - 1]
 
 
@@ -231,7 +228,6 @@ function setNewElementSticker(img, x, y) {
 function resizeCanvas() {
     let { offsetWidth, offsetHeight } = getOffsetSize()
     let windowWidth = window.innerWidth
-    if (windowWidth <= 1100) tabTogalText()
     var elContainer = document.querySelector('.main-meme')
     if (offsetWidth / offsetHeight <= 1) {
         gCanvas.width = offsetWidth - 100

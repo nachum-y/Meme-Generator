@@ -11,7 +11,7 @@ function setCanvas(meme) {
     gCtx = gCanvas.getContext('2d')
     let windowWidth = window.innerWidth
     if (windowWidth < 750) document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
-    if (windowWidth <= 1100) tabTogalText()
+    // if (windowWidth <= 1100) tabTogalText()
     if (meme.lines[0].pos.x === -100) {
         var skipLines = true
     }
@@ -25,7 +25,6 @@ function setCanvas(meme) {
             gCanvas.width = windowWidth - 480
             // gCanvas.width = offsetWidth
             gCanvas.height = gCanvas.width
-            console.log(2)
             if ((windowWidth - 380) < 750) {
                 gCanvas.width = windowWidth - 100
 
@@ -35,11 +34,9 @@ function setCanvas(meme) {
         } else {
             gCanvas.width = offsetHeight - 100
             gCanvas.height = gCanvas.width
-            console.log(1)
 
         }
         setCanvasSize(gCanvas.width, gCanvas.height)
-        console.log(meme)
         if (skipLines) {
             meme.lines[0].pos.x = gCanvas.width / 2
             meme.lines[0].pos.y = gCanvas.height / 2
@@ -97,8 +94,11 @@ function onMove(ev) {
     let selectedMeme = getSelectedMeme()
     let windowWidth = window.innerWidth
     if (!selectedMeme.isDrag) return
-    if (windowWidth < 750) document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
-
+    if (windowWidth < 750) {
+        document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
+        document.querySelector('.main-container').classList.add('minimize-side-bar')
+        
+    }
     const pos = getEvPos(ev)
     const dx = pos.x
     const dy = pos.y
@@ -130,7 +130,6 @@ function isMouseOnElement({ x, y }) {
     var meme = getMeme()
     var isDrag = false
     var idLine = null
-    console.log(x, y)
     clearAllSelectedElements()
     let elTxtInput = document.querySelector('.input-txt')
     elTxtInput.value = ''
@@ -257,11 +256,18 @@ function onlineDownElement(el) {
 
 }
 
+function onlineCenterElement() {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.pos.x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
+    selectedMeme.pos.y = gCanvas.height /2 
+    setSquareAroundElement(selectedMeme)
+    renderCanvas()
+}
 
 function onAlignRightElement(el) {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
-    console.log(selectedMeme)
     selectedMeme.pos.x = gCanvas.width - selectedMeme.pos.width / 2 - selectedMeme.size
     setSquareAroundElement(selectedMeme)
     renderCanvas()

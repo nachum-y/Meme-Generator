@@ -25,7 +25,6 @@ function getImgById(id) {
 }
 
 function onSetFilterByTxt(input) {
-    console.log(input)
     setImagesFillter(input)
     renderImagesGallery()
 
@@ -34,7 +33,6 @@ function onSetFilterByTxt(input) {
 
 function enlargeSearchKey(el){
     let compStyles = window.getComputedStyle(el);
-    console.log(compStyles.fontSize);
     setSearchKeyWord(el.innerText)
     if (parseInt(compStyles.fontSize) > 35) return  
     el.style.fontSize = parseInt(compStyles.fontSize)+1+'px'
