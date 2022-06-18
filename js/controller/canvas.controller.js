@@ -26,9 +26,9 @@ function setCanvas(meme) {
             // gCanvas.width = offsetWidth
             gCanvas.height = gCanvas.width
             console.log(2)
-            if ((windowWidth - 380) <750){
+            if ((windowWidth - 380) < 750) {
                 gCanvas.width = windowWidth - 100
-                
+
                 gCanvas.height = gCanvas.width
             }
 
@@ -63,11 +63,7 @@ function renderCanvas(img = gImg) {
 
 
 
-// drawImg(image, meme)
-// drawText(meme)
 
-// let canvasWidth = gCanvas.width
-// let canvasHeight = gCanvas.height
 
 
 
@@ -82,7 +78,6 @@ function onDown(ev) {
     var isDrag = false
     var { isDrag, idLine } = isMouseOnElement(pos)
     if (!isDrag) return
-
     // document.body.style.cursor = 'text'
 
 
@@ -94,6 +89,7 @@ function onMove(ev) {
         meme.isDrag === true
     )
     if (!curMeme) return
+
     const pos = getEvPos(ev)
     const dx = pos.x
     const dy = pos.y
@@ -131,10 +127,13 @@ function isMouseOnElement({ x, y }) {
         var shapeRight = shapeLeft + meme.pos.width
         var shapTop = meme.pos.y - meme.pos.height
         var shapBottom = meme.pos.y
-
-
+        console.log('shapeLeft:', shapeLeft)
+        console.log('shapeRight:', shapeRight)
+        console.log('shapTop:', shapTop)
+        console.log('shapBottom:', shapBottom)
+        console.log('x, y:', x, y)
+        
         if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
-
             // meme.isDrag = true
             isDrag = true
             idLine = idx

@@ -1,4 +1,5 @@
 'use strict'
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function setCanvasSize(hieght, width) {
     gCanvas.height = hieght
@@ -57,17 +58,21 @@ function getEvPos(ev) {
         y: ev.offsetY
     }
     // Check if its a touch ev
-    // if (gTouchEvs.includes(ev.type)) {
-    //     //soo we will not trigger the mouse ev
-    //     ev.preventDefault()
-    //     //Gets the first touch point
-    //     ev = ev.changedTouches[0]
-    //     //Calc the right pos according to the touch screen
-    //     pos = {
-    //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-    //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
-    //     }
-    // }
+    if (gTouchEvs.includes(ev.type)) {
+        //soo we will not trigger the mouse ev
+        ev.preventDefault()
+        //Gets the first touch point
+        ev = ev.changedTouches[0]
+        //Calc the right pos according to the touch screen
+        let canvasSize = canvas.getBoundingClientRect();
+        console.log('ev.target.offsetLeft:',ev.target.offsetLeft)
+        console.log('ev.target.clientLeft:',ev.target.clientLeft)
+        console.log('x = e.targetTouches[0]:',ev.pageX)
+        pos = {
+            x: ev.pageX - canvasSize.left,
+            y: ev.pageY - canvasSize.top
+        }
+    }
     return pos
 }
 
