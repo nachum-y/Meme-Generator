@@ -39,10 +39,7 @@
         margin-top: 0.3em;
     }
 
-    .sidebar-nav.close {
-        width: 100%;
-    }
-
+  
     .sidebar-nav {
         position: fixed;
         left: 0;
@@ -71,6 +68,7 @@
 
     .hero-content {
         padding: 1em 2em;
+        margin-bottom: 4em;
     }
 
 
@@ -141,15 +139,12 @@
     }
    
     
+    .popular-searches {
+        flex-wrap: wrap;
+        gap: 1em;
 
+    }
 }
-
-
-
-
-
-
-
 
 
 
@@ -166,6 +161,10 @@
         top: 7rem;
     }
 
+    .sidebar-nav.nav-home-page{
+        top: 4rem;
+    }
+
 
     .sidebar-navigation-content {
         top: 0;
@@ -174,18 +173,25 @@
         left: 80px;
     }
 
+    .element-style-topbar {
+        flex-grow: 4;
+    }
 
-
-
+    .align-element {
+        margin-inline-end: 5%;
+        flex-grow: 0;
+    }
+    
+    .sidebar-nav.close {
+        width: 80px;
+    }
 }
 
 /* MEDIUM */
 @media (min-width: 840px) {
 
 
-    .sidebar-nav.close {
-        width: 80px;
-    }
+    
 }
 
 /* LARGE */

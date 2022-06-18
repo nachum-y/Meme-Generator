@@ -29,6 +29,7 @@ function setActiveSideBar(page) {
         elSideBar.querySelector('.sidebar-navigation-content').classList.add('hide')
         elSideBar.querySelector('.active').classList.remove('active')
         elSideBar.querySelector('.all-memes-tab').classList.add('active')
+        elSideBar.classList.add('nav-home-page')
         elMainContainer.classList.add('close')
         elHeroContent.classList.remove('hide')
         elTopNavEdit.classList.add('hide')
@@ -45,6 +46,7 @@ function setActiveSideBar(page) {
         elMainContainer.classList.remove('close')
         elTopNavEdit.classList.remove('hide')
         elMainContainer.classList.remove('minimize-side-bar')
+        elSideBar.classList.remove('nav-home-page')
         
 
     }

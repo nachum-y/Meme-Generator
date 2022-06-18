@@ -20,14 +20,22 @@ function setCanvas(meme) {
     gImg.src = image.src//send a network req to get that image, define the img src
     gImg.onload = () => {
         let { offsetWidth, offsetHeight } = getOffsetSize()
-        if (offsetWidth / offsetHeight <= 1) {
-            gCanvas.width = offsetWidth - 400
-            gCanvas.height = gCanvas.width
+        if ((windowWidth - 380) / offsetHeight <= 1) {
 
+            gCanvas.width = windowWidth - 480
+            // gCanvas.width = offsetWidth
+            gCanvas.height = gCanvas.width
+            console.log(2)
+            if ((windowWidth - 380) <750){
+                gCanvas.width = windowWidth - 100
+                
+                gCanvas.height = gCanvas.width
+            }
 
         } else {
             gCanvas.width = offsetHeight - 100
             gCanvas.height = gCanvas.width
+            console.log(1)
 
         }
         setCanvasSize(gCanvas.width, gCanvas.height)
