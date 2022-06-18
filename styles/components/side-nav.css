@@ -6,7 +6,7 @@
     /* height: 100%; */
     left: 0;
     width: 380px;
-    z-index:20;
+    z-index: 20;
     height: calc(100% - 4rem);
 
 }
@@ -100,4 +100,30 @@ li:hover .tooltip {
     background-color: #252627;
     /* left: 80px; mq */
     opacity: 1;
+}
+
+
+.sidebar-nav.nav-home-page ul li:not(:first-child) {
+    pointer-events: none;
+}
+
+
+.sidebar-navigation .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    bottom: 3.5em;
+    left: -2em;
+    z-index: 0;
+}
+
+.sidebar-navigation .tooltiptext.showTollTip{
+    visibility: visible;
 }

@@ -56,11 +56,8 @@ function setActiveSideBar(page) {
 
 function tabTogalText(el) {
     // Minimize
-    let elSideBarContent = document.querySelector('.sidebar-navigation-content')
-    let elMainContainer = document.querySelector('.main-container')
-    elSideBarContent.classList.toggle('minimize-side-bar')
-    elMainContainer.classList.toggle('minimize-side-bar')
-    console.log(elSideBarContent)
+
+    // console.log(elSideBarContent)
 
 
 }

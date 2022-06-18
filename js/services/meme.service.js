@@ -60,7 +60,19 @@ function _crateNewMeme(memeId) {
             isSelected: true,
             isScaled:false,
             font: 'impact'
-        }]
+        }],
+        elements:[
+            {
+                img: '',
+                size: 50,
+                pos:{
+                    x:0,
+                    y:0,
+                },
+                isDrag:false,
+                isSelected:false
+            }
+        ]
 
     }
 

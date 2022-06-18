@@ -37,7 +37,7 @@
         </header>
 
 
-        <div class="main-container clos2e">
+        <div class="main-container">
 
             <div class="hero-content ">
                 <h2>What meme will you design?</h2>
@@ -62,7 +62,7 @@
 
             </div>
 
-            <main class="main-content">
+            <main class="main-content ">
 
             </main>
 
@@ -75,7 +75,7 @@
                 <ul>
                     <li onclick="renderImagesGallery()" class="all-memes-tab">
                         <span class="list-title">All memes</span>
-                       
+
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"
@@ -84,8 +84,9 @@
                             </svg>
                         </i>
                     </li>
-                    <li onclick="tabTogalText(this)" class="active meme-page-tab">
+                    <li onclick="onSideNavTabClick(this)" oncli1ck="tabTogalText(this)" class="active meme-page-tab">
                         <span class="list-title">Text</span>
+                        <span class="tooltiptext">Click her for Edit</span>
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor" fill-rule="evenodd"
@@ -94,30 +95,34 @@
                             </svg>
                         </i>
                     </li>
-                    <li>
-                        <span class="list-title">projects</span>
+                    <li onclick="onSideNavTabClick(this)">
+                        <span class="list-title">Elements</span>
                         <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24" height="24" viewBox="0 0 24 24">
-                                <defs>
-                                    <path id="_775853201__a"
-                                        d="M13 7h7c1.1 0 2 .83 2 1.86v9.28c0 1.03-.9 1.86-2 1.86H4c-1.1 0-2-.83-2-1.86V8.86c0-.14.02-.28.05-.42A2 2 0 0 1 2 8V6c0-1.1.9-2 2-2h6.56a2 2 0 0 1 1.9 1.37L13 7zm-1.58 0-.39-1.16a.5.5 0 0 0-.47-.34H4a.5.5 0 0 0-.5.5v1.06c.16-.04.33-.06.5-.06h7.42zM4 8.5c-.3 0-.5.19-.5.36v9.28c0 .17.2.36.5.36h16c.3 0 .5-.19.5-.36V8.86c0-.17-.2-.36-.5-.36H4z">
-                                    </path>
-                                </defs>
-                                <use fill="currentColor" fill-rule="nonzero" xlink:href="#_775853201__a"></use>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"
+                                    d="m6.5 4.25.75-.75a2.121 2.121 0 0 1 3 3L6.5 10.25 2.75 6.5a2.121 2.121 0 0 1 3-3l.75.75zm7 6 4-7.5 4 7.5h-8zm-10.75 3.5h7.5v7.5h-7.5v-7.5zm14.75-.25a4 4 0 1 0 0 8 4 4 0 0 0 0-8z">
+                                </path>
                             </svg>
                         </i>
-                       
+
                     </li>
                     <li>
-                        <span class="list-title">Uploud</span>
-                        <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12.75 13.81v7.44a.75.75 0 1 1-1.5 0v-7.4L9.49 15.6a.75.75 0 1 1-1.06-1.06l2.35-2.36c.68-.68 1.8-.68 2.48 0l2.35 2.36a.75.75 0 1 1-1.06 1.06l-1.8-1.8zM9 18v1.5H6.75v-.01A5.63 5.63 0 0 1 5.01 8.66a6 6 0 0 1 11.94-.4 5.63 5.63 0 0 1 .3 11.23v.01H15V18h1.88a4.12 4.12 0 1 0-1.5-7.97A4.51 4.51 0 0 0 11 4.5a4.5 4.5 0 0 0-4.43 5.29 4.13 4.13 0 0 0 .68 8.2V18H9z"></path></svg></i>
-                        
+                        <span class="list-title">Upload</span>
+                        <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12.75 13.81v7.44a.75.75 0 1 1-1.5 0v-7.4L9.49 15.6a.75.75 0 1 1-1.06-1.06l2.35-2.36c.68-.68 1.8-.68 2.48 0l2.35 2.36a.75.75 0 1 1-1.06 1.06l-1.8-1.8zM9 18v1.5H6.75v-.01A5.63 5.63 0 0 1 5.01 8.66a6 6 0 0 1 11.94-.4 5.63 5.63 0 0 1 .3 11.23v.01H15V18h1.88a4.12 4.12 0 1 0-1.5-7.97A4.51 4.51 0 0 0 11 4.5a4.5 4.5 0 0 0-4.43 5.29 4.13 4.13 0 0 0 .68 8.2V18H9z">
+                                </path>
+                            </svg></i>
+
                     </li>
-                    <li>
+                    <li onclick="onSideNavTabClick(this)">
                         <span class="list-title">Share</span>
-                     <i><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 11.75V19a.5.5 0 0 0 .5.5h14a.5.5 0 0 0 .5-.5v-7.25a.75.75 0 1 1 1.5 0V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7.25a.75.75 0 1 1 1.5 0Zm8.323-6.19v9.69a.75.75 0 0 1-1.5 0l-.001-9.69-3.037 3.215a.751.751 0 0 1-1.062-1.06l4.318-4.495a.751.751 0 0 1 1.062 0l4.18 4.495a.749.749 0 1 1-1.06 1.06l-2.9-3.216Z" fill="currentColor" fill-rule="nonzero"></path></svg></i>
-                    
+                        <i><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4.5 11.75V19a.5.5 0 0 0 .5.5h14a.5.5 0 0 0 .5-.5v-7.25a.75.75 0 1 1 1.5 0V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7.25a.75.75 0 1 1 1.5 0Zm8.323-6.19v9.69a.75.75 0 0 1-1.5 0l-.001-9.69-3.037 3.215a.751.751 0 0 1-1.062-1.06l4.318-4.495a.751.751 0 0 1 1.062 0l4.18 4.495a.749.749 0 1 1-1.06 1.06l-2.9-3.216Z"
+                                    fill="currentColor" fill-rule="nonzero"></path>
+                            </svg></i>
+
                     </li>
                 </ul>
             </nav>
@@ -135,13 +140,39 @@
                     <div onclick="onAddElement(this,40,1)" class="add-a-subheading">Add a subheading</div>
                     <div onclick="onAddElement(this,20,1)" class="add-a-little-text">Add a little bit of body text</div>
                 </div>
+                <div class="tab-content-others hide">
+                    <div class="shareMeme">
+                        <strong class="tab-content-title">Share Your Meme</strong>
+                        <a class="share-to-facebook" href="#" title="Facebook" target="_blank"
+                            style="font-size:32px!important;box-shadow:none;display:inline-block;vertical-align:middle"><span
+                                class="heateor_sss_svg"
+                                style="background-color:#3c589a;width:70px;height:35px;display:inline-block;opacity:1;font-size:32px;box-shadow:none;display:inline-block;font-size:16px;padding:0 4px;vertical-align:middle;background-repeat:repeat;overflow:hidden;padding:0;cursor:pointer;box-sizing:content-box"><svg
+                                    style="display:block;" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                                    viewBox="-5 -5 42 42">
+                                    <path
+                                        d="M17.78 27.5V17.008h3.522l.527-4.09h-4.05v-2.61c0-1.182.33-1.99 2.023-1.99h2.166V4.66c-.375-.05-1.66-.16-3.155-.16-3.123 0-5.26 1.905-5.26 5.405v3.016h-3.53v4.09h3.53V27.5h4.223z"
+                                        fill="#fff"></path>
+                                </svg></span></a>
+                    </div>
+                    <div class="elements">
+                        <strong class="tab-content-title">Click on elements to add to page</strong>
+                        <img src="/images/Stickers/1.png" alt="sticker">
+                        <img src="/images/Stickers/2.png" alt="sticker">
+                        <img src="/images/Stickers/3.png" alt="sticker">
+                        <img src="/images/Stickers/4.png" alt="sticker">
+                        <img src="/images/Stickers/5.png" alt="sticker">
+                        <img src="/images/Stickers/6.png" alt="sticker">
+                        <img src="/images/Stickers/7.png" alt="sticker">
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- /end sidenavbar -->
-        <div class="top-nav-e2dit">
-            <!--             
+    <!-- /end sidenavbar -->
+    <div class="top-nav-e2dit">
+        <!--             
             <div class="controller-top-bar">
                 <div class="grid-controller">
                     <div class="font-selctor ">
@@ -192,7 +223,7 @@
                     <div onclick="onRemoveElement(this)" class="btn-controller remove-element"><i
                             class="fa-solid fa-trash-can"></i></div>
                 </div> -->
-        </div>
+    </div>
     </div>
 
     </div>
@@ -204,10 +235,12 @@
     <script src="js/services/main.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/canvas.service.js"></script>
+    <script src="js/services/side-nav-service.js"></script>
     <!-- contrellers -->
     <script src="js/controller/gallery.controller.js"></script>
     <script src="js/controller/meme.controller.js"></script>
     <script src="js/controller/canvas.controller.js"></script>
+    <script src="js/controller/side-nav-controller.js"></script>
 
 
 </body>

@@ -44,6 +44,7 @@ function setLineDrag(isDrag) {
 
 
 function moveShape(meme, x, y) {
+    console.log(1);
     meme.pos.x = x
     meme.pos.y = y
     renderCanvas()
@@ -85,7 +86,9 @@ function setTextinput(meme, elTxtInput) {
 
 function getSelectedMeme() {
     let meme = getMeme()
-    return meme.lines.find((meme) => meme.isSelected)
+    if (meme.lines.find((meme) => meme.isSelected)) return meme.lines.find((meme) => meme.isSelected)
+    if (meme.elements.find((meme) => meme.isSelected)) return meme.elements.find((meme) => meme.isSelected)
+    return false
 }
 
 
@@ -121,22 +124,45 @@ function drawText(meme) {
 
 function setSquareAroundElement(meme) {
     let elSquareAround = document.querySelector('.square-around-element')
-    let windowWidth = window.innerWidth
-
     if (!meme.isSelected) {
         elSquareAround.style.visibility = 'hidden'
         return
     }
+    let windowWidth = window.innerWidth
+
+
+
+
+
+
+
+    if (meme.img) {
+        elSquareAround.style.visibility = 'visible'
+        elSquareAround.style.fontSize = `${meme.size}px`
+        elSquareAround.style.position = 'absolute'
+        elSquareAround.style.top = `${meme.pos.y}px`
+        elSquareAround.style.left = `${meme.pos.x + meme.size/4 }px`
+        elSquareAround.style.width = `${meme.size}px`
+        elSquareAround.style.height = `${meme.size}px`
+        // elSquareAround.style.transform = `translate(${-meme.size / 2}px, 0px)`
+
+        return
+    }
+
+
+    let elTolTip = document.querySelector('.tooltiptext').classList.add('showTollTip')
+
+
     if (meme.txt.length === 0) {
         elSquareAround.style.visibility = 'hidden'
         return
     }
 
-    if (windowWidth > 750){
+    if (windowWidth > 750) {
         document.getElementById("input-txt-selected").focus()
-        alert('what?')
-    } 
-        
+
+    }
+
 
 
     elSquareAround.style.visibility = 'visible'
@@ -153,6 +179,8 @@ function setSquareAroundElement(meme) {
 
 function hideBorderElement() {
     let elSquareAround = document.querySelector('.square-around-element')
+    let elTolTip = document.querySelector('.tooltiptext').classList.remove('showTollTip')
+
     elSquareAround.style.visibility = 'hidden'
 
 }
@@ -178,10 +206,33 @@ function setNewElementLine(txt, size, stroke) {
 }
 
 
+
+function setNewElementSticker(img, x, y) {
+    let meme = getMeme()
+    console.log(img)
+    let newElemenet = {
+        img,
+        size: 50,
+        pos: {
+            x,
+            y,
+        },
+        isDrag: false,
+        isSelected: false
+    }
+
+    meme.elements.push(newElemenet)
+    console.log(meme)
+    return meme.elements[meme.elements.length - 1]
+
+
+}
+
+
 function resizeCanvas() {
     let { offsetWidth, offsetHeight } = getOffsetSize()
     let windowWidth = window.innerWidth
-    if (windowWidth === 1100) tabTogalText()
+    if (windowWidth <= 1100) tabTogalText()
     var elContainer = document.querySelector('.main-meme')
     if (offsetWidth / offsetHeight <= 1) {
         gCanvas.width = offsetWidth - 100
@@ -232,4 +283,19 @@ function resizeDrageElement(meme, dx, dy) {
     setSquareAroundElement(meme)
     updateTopEditPanel(meme)
 
+}
+
+
+function clearAllDragElements() {
+
+    let meme = getMeme()
+    meme.lines.forEach(meme => meme.isDrag = false)
+    meme.elements.forEach(meme => meme.isDrag = false)
+
+}
+
+function clearAllSelectedElements() {
+    let meme = getMeme()
+    meme.lines.forEach(meme => meme.isSelected = false)
+    meme.elements.forEach(meme => meme.isSelected = false)
 }

@@ -11,7 +11,7 @@ function setCanvas(meme) {
     gCtx = gCanvas.getContext('2d')
     let windowWidth = window.innerWidth
 
-    if (windowWidth <= 1100 && windowWidth >= 750) tabTogalText()
+    if (windowWidth <= 1100) tabTogalText()
     if (meme.lines[0].pos.x === -100) {
         var skipLines = true
     }
@@ -57,6 +57,19 @@ function renderCanvas(img = gImg) {
         gCtx.textAlign = 'center'
         drawText(meme)
     })
+
+    meme.elements.forEach(meme => {
+        if (meme.img) {
+            var image
+            console.log(meme.img)
+            image = new Image()
+            image.src = meme.img.src
+            image.onload = () => {
+                console.log(meme.size)
+                gCtx.drawImage(image, meme.pos.x, meme.pos.y, meme.size, meme.size)
+            }
+        }
+    })
     gCtx.save()
 
 }
@@ -74,7 +87,7 @@ function onDown(ev) {
     const pos = getEvPos(ev)
     var meme = getMeme()
     hideBorderElement()
-    meme.lines.forEach(meme => meme.isSelected = false)
+    // meme.lines.forEach(meme => meme.isSelected = false)
     var isDrag = false
     var { isDrag, idLine } = isMouseOnElement(pos)
     if (!isDrag) return
@@ -85,32 +98,35 @@ function onDown(ev) {
 
 function onMove(ev) {
     const meme = getMeme()
-    var curMeme = meme.lines.find(meme =>
-        meme.isDrag === true
-    )
-    if (!curMeme) return
+    // var curMeme = meme.lines.find(meme =>
+    //     meme.isDrag === true
+    // )
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme.isDrag) return
 
     const pos = getEvPos(ev)
     const dx = pos.x
     const dy = pos.y
-    if (curMeme.isScaled) {
-        resizeDrageElement(curMeme, dx, dy)
+    if (selectedMeme.isScaled) {
+        resizeDrageElement(selectedMeme, dx, dy)
         renderCanvas()
         return
     }
 
-    if (curMeme) {
-        setSquareAroundElement(curMeme)
+    if (selectedMeme) {
+        setSquareAroundElement(selectedMeme)
 
 
-        moveShape(curMeme, dx, dy)
+        moveShape(selectedMeme, dx, dy)
 
         var gStartPos = pos
     }
 }
 
 function onUp() {
-    setLineDrag(false)
+    // setLineDrag(false)
+    clearAllDragElements()
+
     document.body.style.cursor = 'default'
 }
 
@@ -119,7 +135,7 @@ function isMouseOnElement({ x, y }) {
     var meme = getMeme()
     var isDrag = false
     var idLine = null
-
+    clearAllSelectedElements()
     let elTxtInput = document.querySelector('.input-txt')
     elTxtInput.value = ''
     meme.lines.forEach((meme, idx) => {
@@ -127,9 +143,10 @@ function isMouseOnElement({ x, y }) {
         var shapeRight = shapeLeft + meme.pos.width
         var shapTop = meme.pos.y - meme.pos.height
         var shapBottom = meme.pos.y
-        
-        if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
+        meme.isScaled = false
+        if (x > shapeLeft && x < shapeRight + meme.size&& y > shapTop && y < shapBottom + meme.size ) {
             // meme.isDrag = true
+
             isDrag = true
             idLine = idx
             meme.isDrag = true
@@ -138,11 +155,38 @@ function isMouseOnElement({ x, y }) {
             meme.isSelected = true
             if (shapeRight <= x && shapBottom <= y) {
                 meme.isScaled = true
-                
+
             }
         }
 
     })
+
+
+
+
+    meme.elements.forEach((meme, idx) => {
+        var shapeLeft = meme.pos.x - meme.size / 2
+        var shapeRight = shapeLeft + meme.size
+        var shapTop = meme.pos.y - meme.size
+        var shapBottom = meme.pos.y
+        meme.isScaled = false
+        if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
+            // meme.isDrag = true
+            // isDrag = true
+            idLine = idx
+            meme.isDrag = true
+            setSquareAroundElement(meme)
+            meme.isSelected = true
+            if (shapeRight <= x && shapBottom <= y) {
+                meme.isScaled = true
+
+            }
+        }
+
+    })
+
+
+
 
     return ({ isDrag, idLine })
 
@@ -261,6 +305,13 @@ function onAddElement(el, size, stroke) {
     renderCanvas()
 
 
+
+}
+
+
+function onAddSticker(el) {
+    setNewElementSticker(el, gCanvas.width / 2, gCanvas.height / 2)
+    renderCanvas()
 
 }
 
