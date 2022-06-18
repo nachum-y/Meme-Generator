@@ -45,8 +45,8 @@
     }
 
     .main-container.meme-page.minimize-side-bar{
-        top: 0;
-        z-index: 0;
+        /* top: 0; */
+        /* z-index: 0; */
     }
     
 
@@ -132,8 +132,8 @@
     }
 
     .main-container.meme-page {
-        top: -8em;
-        z-index: 50;
+        /* top: -8em; */
+        /* z-index: 50; */
     }
 
 

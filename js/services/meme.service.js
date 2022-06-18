@@ -58,7 +58,7 @@ function _crateNewMeme(memeId) {
             isDrag: false,
             isSelected: true,
             isScaled:false,
-            font: 'impact'
+            font: 'Impact'
         }],
         elements:[
             {

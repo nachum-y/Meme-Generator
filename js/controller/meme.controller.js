@@ -30,10 +30,10 @@ function renderMeme(memeId) {
     <div class="controller-top-bar">
                 <div class="grid-controller">
                     <div class="font-selctor ">
-                        <select>
-                            <option>Impact</option>
-                            <option>No external background image</option>
-                            <option>No wrapper</option>
+                        <select onchange="onSelectFont(this.value)">
+                            <option class="font-impact">Impact</option>
+                            <option class="font-dancing-script">Dancing Script</option>
+                            <option class="Teko">Teko</option>
                         </select>
                     </div>
                     <div class="size-selecor">

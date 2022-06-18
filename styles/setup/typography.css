@@ -1,25 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Teko&display=swap');
+
 /* impact */
 @font-face {
-    font-family: 'impact', sans-serif;
-    src: url(/fonts/impact/impact.ttf);
+    font-family: Impact, sans-serif;
+    src: url(fonts/impact/impact.ttf);
 }
 
 /* Font Awesome */
 @font-face {
     font-family: 'Font Awesome 6 Free';
-    src: url(/fonts/FontAwesome/fa-solid-900.ttf);
+    src: url(fonts/FontAwesome/fa-solid-900.ttf);
 }
 
 /* Oswald */
 @font-face {
-    font-family: 'Oswald', sans-serif;
-    src: url(/fonts/Oswald/Oswald-Regular.ttf);
+    font-family: Oswald, sans-serif;
+    src: url(fonts/Oswald/Oswald-Regular.ttf);
 }
 
 
 /* Teko */
 @font-face {
-    font-family: 'Teko', sans-serif;
-    src: url(./fonts/Teko/Teko-Regular.ttf);
+    font-family: Teko, sans-serif;
+    src: url(fonts/Teko/Teko-Regular.ttf);
 }
 
+/* DancingScript */
+@font-face {
+    font-family: Dancing Script, sans-serif;
+    src: url(fonts/DancingScript/DancingScript-Regular.ttf)
+}

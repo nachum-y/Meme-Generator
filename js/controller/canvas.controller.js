@@ -97,7 +97,7 @@ function onMove(ev) {
     if (windowWidth < 750) {
         document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
         document.querySelector('.main-container').classList.add('minimize-side-bar')
-        
+
     }
     const pos = getEvPos(ev)
     const dx = pos.x
@@ -198,6 +198,15 @@ function onTextChange(el) {
 
 }
 
+
+function onSelectFont(select) {
+    let selectedMeme = getSelectedMeme()
+    if (!selectedMeme) return
+    selectedMeme.font = select
+    renderCanvas()
+
+}
+
 function onColorChange(el) {
     // el.value = el.color
     let selectedMeme = getSelectedMeme()
@@ -260,7 +269,7 @@ function onlineCenterElement() {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
     selectedMeme.pos.x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
-    selectedMeme.pos.y = gCanvas.height /2 
+    selectedMeme.pos.y = gCanvas.height / 2
     setSquareAroundElement(selectedMeme)
     renderCanvas()
 }
