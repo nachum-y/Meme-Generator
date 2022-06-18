@@ -64,10 +64,7 @@ function getEvPos(ev) {
         //Gets the first touch point
         ev = ev.changedTouches[0]
         //Calc the right pos according to the touch screen
-        let canvasSize = canvas.getBoundingClientRect();
-        console.log('ev.target.offsetLeft:',ev.target.offsetLeft)
-        console.log('ev.target.clientLeft:',ev.target.clientLeft)
-        console.log('x = e.targetTouches[0]:',ev.pageX)
+        let canvasSize = canvas.getBoundingClientRect()
         pos = {
             x: ev.pageX - canvasSize.left,
             y: ev.pageY - canvasSize.top
@@ -124,6 +121,8 @@ function drawText(meme) {
 
 function setSquareAroundElement(meme) {
     let elSquareAround = document.querySelector('.square-around-element')
+    let windowWidth = window.innerWidth
+
     if (!meme.isSelected) {
         elSquareAround.style.visibility = 'hidden'
         return
@@ -133,7 +132,11 @@ function setSquareAroundElement(meme) {
         return
     }
 
-    document.getElementById("input-txt-selected").focus()
+    if (windowWidth > 750){
+        document.getElementById("input-txt-selected").focus()
+        alert('what?')
+    } 
+        
 
 
     elSquareAround.style.visibility = 'visible'
@@ -178,7 +181,7 @@ function setNewElementLine(txt, size, stroke) {
 function resizeCanvas() {
     let { offsetWidth, offsetHeight } = getOffsetSize()
     let windowWidth = window.innerWidth
-    if(windowWidth === 1100) tabTogalText()
+    if (windowWidth === 1100) tabTogalText()
     var elContainer = document.querySelector('.main-meme')
     if (offsetWidth / offsetHeight <= 1) {
         gCanvas.width = offsetWidth - 100
@@ -229,11 +232,4 @@ function resizeDrageElement(meme, dx, dy) {
     setSquareAroundElement(meme)
     updateTopEditPanel(meme)
 
-    // console.log(meme, dx)
-    // const pos = getEvPos(ev)
-
-    // const dx = pos.x
-    // const dy = pos.y
-
-    // console.log(dx, dy)
 }

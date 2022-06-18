@@ -127,11 +127,6 @@ function isMouseOnElement({ x, y }) {
         var shapeRight = shapeLeft + meme.pos.width
         var shapTop = meme.pos.y - meme.pos.height
         var shapBottom = meme.pos.y
-        console.log('shapeLeft:', shapeLeft)
-        console.log('shapeRight:', shapeRight)
-        console.log('shapTop:', shapTop)
-        console.log('shapBottom:', shapBottom)
-        console.log('x, y:', x, y)
         
         if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
             // meme.isDrag = true
@@ -143,12 +138,7 @@ function isMouseOnElement({ x, y }) {
             meme.isSelected = true
             if (shapeRight <= x && shapBottom <= y) {
                 meme.isScaled = true
-                // resizeDrageElement()
-                // elSquareAround.style.top = `${meme.pos.y - meme.pos.height}px`
-                // elSquareAround.style.left = `${meme.pos.x - meme.pos.width / 2}px`
-                // elSquareAround.style.width = `${meme.pos.width + meme.size}px`
-                // elSquareAround.style.height = `${meme.pos.height + meme.size / 2}px`
-                // elSquareAround.style.transform = `translate(${-meme.size / 2}px, 0px)`
+                
             }
         }
 
