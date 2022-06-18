@@ -2,7 +2,7 @@
 
 
 function onSideNavTabClick(el) {
-    console.log(el);
+    console.log(el)
 
 
     let elSideBarContent = document.querySelector('.sidebar-navigation-content')
@@ -30,25 +30,28 @@ function onSideNavTabClick(el) {
 }
 
 function renderSideNavContent(el) {
-    let strHtmls
+    let strHtmls = ``
+    let elText = el.querySelector('span')
     let elContentMain = document.querySelector('.tab-content')
     let elContent = document.querySelector('.tab-content-others')
-    if (el.innerText === 'Text') {
+    if (elText.innerText === 'Text') {
         elContentMain.classList.remove('hide')
         elContent.classList.add('hide')
     }
-    if (el.innerText === 'Share') {
+    if (elText.innerText === 'Share') {
+        console.log('shhh');
         elContentMain.classList.add('hide')
         elContent.classList.remove('hide')
         strHtmls = getHtmls('Share')
     }
-    if (el.innerText === 'Elements') {
+    if (elText.innerText === 'Elements') {
         elContentMain.classList.add('hide')
         elContent.classList.remove('hide')
         strHtmls = getHtmls('Elements')
     }
 
 
+    console.log(strHtmls)
 
     elContent.innerHTML = strHtmls
 

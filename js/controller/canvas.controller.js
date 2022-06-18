@@ -10,7 +10,7 @@ function setCanvas(meme) {
     gCanvas = document.getElementById('canvas')
     gCtx = gCanvas.getContext('2d')
     let windowWidth = window.innerWidth
-
+    if (windowWidth < 750) document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
     if (windowWidth <= 1100) tabTogalText()
     if (meme.lines[0].pos.x === -100) {
         var skipLines = true
@@ -95,7 +95,9 @@ function onMove(ev) {
     //     meme.isDrag === true
     // )
     let selectedMeme = getSelectedMeme()
+    let windowWidth = window.innerWidth
     if (!selectedMeme.isDrag) return
+    if (windowWidth < 750) document.querySelector('.sidebar-navigation-content').classList.add('minimize-side-bar')
 
     const pos = getEvPos(ev)
     const dx = pos.x

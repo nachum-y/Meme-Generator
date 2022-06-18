@@ -1,10 +1,12 @@
 'use strict'
 
 function getHtmls(el) {
-
+    console.log(el)
+    
+    let elBack
     switch (el) {
         case 'Text':
-            return `
+            elBack = `
             
             <label class="text-input-container" for="text-input">
             <strong class="tab-content-title">Edit text</strong>
@@ -25,7 +27,7 @@ function getHtmls(el) {
 
             break
         case 'Share':
-            return `
+            elBack = `
                 
                 
                 
@@ -43,61 +45,65 @@ function getHtmls(el) {
                         </svg></span></a>
                 
                 `
+            break
         case 'Elements':
-            return `
+            elBack = `
         <div class="elements">
         <strong class="tab-content-title">Click on elements to add to page</strong>
-        <img onclick="onAddSticker(this)" src="images/Stickers/1.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/2.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/3.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/4.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/5.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/6.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/J2gjRJc/1.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/HVZLP7G/2.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/4p3BGXQ/3.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/s555SKn/4.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/GMFtNpT/5.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/LkbHYk9/6.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="https://i.ibb.co/Kx0gq9G/7.png" alt="sticker">
     </div>
         
         
         `
+            break
         default:
             break
     }
+
+    return elBack
 
 
 
