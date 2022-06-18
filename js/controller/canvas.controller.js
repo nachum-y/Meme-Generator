@@ -60,14 +60,8 @@ function renderCanvas(img = gImg) {
 
     meme.elements.forEach(meme => {
         if (meme.img) {
-            var image
-            console.log(meme.img)
-            image = new Image()
-            image.src = meme.img.src
-            image.onload = () => {
-                console.log(meme.size)
-                gCtx.drawImage(image, meme.pos.x, meme.pos.y, meme.size, meme.size)
-            }
+            gCtx.textAlign = 'center'
+            gCtx.drawImage(meme.img, meme.pos.x - (meme.size / 2), meme.pos.y - (meme.size / 2), meme.size, meme.size)
         }
     })
     gCtx.save()
@@ -83,7 +77,6 @@ function renderCanvas(img = gImg) {
 
 
 function onDown(ev) {
-
     const pos = getEvPos(ev)
     var meme = getMeme()
     hideBorderElement()
@@ -135,6 +128,7 @@ function isMouseOnElement({ x, y }) {
     var meme = getMeme()
     var isDrag = false
     var idLine = null
+    console.log(x, y)
     clearAllSelectedElements()
     let elTxtInput = document.querySelector('.input-txt')
     elTxtInput.value = ''
@@ -144,7 +138,7 @@ function isMouseOnElement({ x, y }) {
         var shapTop = meme.pos.y - meme.pos.height
         var shapBottom = meme.pos.y
         meme.isScaled = false
-        if (x > shapeLeft && x < shapeRight + meme.size&& y > shapTop && y < shapBottom + meme.size ) {
+        if (x > shapeLeft && x < shapeRight + meme.size && y > shapTop && y < shapBottom + meme.size) {
             // meme.isDrag = true
 
             isDrag = true
@@ -165,10 +159,10 @@ function isMouseOnElement({ x, y }) {
 
 
     meme.elements.forEach((meme, idx) => {
-        var shapeLeft = meme.pos.x - meme.size / 2
+        var shapeLeft = meme.pos.x - meme.size
         var shapeRight = shapeLeft + meme.size
-        var shapTop = meme.pos.y - meme.size
-        var shapBottom = meme.pos.y
+        var shapTop = meme.pos.y - meme.size / 2
+        var shapBottom = meme.pos.y + meme.size / 2
         meme.isScaled = false
         if (x > shapeLeft && x < shapeRight + meme.size / 1.3 && y > shapTop && y < shapBottom + meme.size / 1.3) {
             // meme.isDrag = true
@@ -310,8 +304,18 @@ function onAddElement(el, size, stroke) {
 
 
 function onAddSticker(el) {
-    setNewElementSticker(el, gCanvas.width / 2, gCanvas.height / 2)
-    renderCanvas()
+
+    var image
+    image = new Image()
+    image.src = el.src
+    image.onload = () => {
+
+
+        setNewElementSticker(el, gCanvas.width / 2, gCanvas.height / 2)
+        renderCanvas()
+    }
+
+
 
 }
 

@@ -47,13 +47,50 @@ function getHtmls(el) {
             return `
         <div class="elements">
         <strong class="tab-content-title">Click on elements to add to page</strong>
-        <img onclick="onAddSticker(this)" src="/images/Stickers/1.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/2.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/3.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/4.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/5.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/6.png" alt="sticker">
-        <img onclick="onAddSticker(this)" src="/images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/1.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/2.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/3.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/4.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/5.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/6.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
+        <img onclick="onAddSticker(this)" src="images/Stickers/7.png" alt="sticker">
     </div>
         
         

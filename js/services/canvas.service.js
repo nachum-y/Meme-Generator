@@ -44,7 +44,6 @@ function setLineDrag(isDrag) {
 
 
 function moveShape(meme, x, y) {
-    console.log(1);
     meme.pos.x = x
     meme.pos.y = y
     renderCanvas()
@@ -140,8 +139,8 @@ function setSquareAroundElement(meme) {
         elSquareAround.style.visibility = 'visible'
         elSquareAround.style.fontSize = `${meme.size}px`
         elSquareAround.style.position = 'absolute'
-        elSquareAround.style.top = `${meme.pos.y}px`
-        elSquareAround.style.left = `${meme.pos.x + meme.size/4 }px`
+        elSquareAround.style.top = `${meme.pos.y - meme.size/2}px`
+        elSquareAround.style.left = `${meme.pos.x - meme.size/2 }px`
         elSquareAround.style.width = `${meme.size}px`
         elSquareAround.style.height = `${meme.size}px`
         // elSquareAround.style.transform = `translate(${-meme.size / 2}px, 0px)`
@@ -274,6 +273,17 @@ function getOffsetSize() {
 }
 
 function resizeDrageElement(meme, dx, dy) {
+    if(meme.img){
+        if (dx <= meme.pos.x) {
+            meme.size -= 1
+        }
+        else {
+            meme.size += 1
+        }
+        setSquareAroundElement(meme)
+        updateTopEditPanel(meme)
+        return
+    }
     if (dx <= meme.pos.x + meme.pos.width / 2) {
         meme.size -= 1
     }
