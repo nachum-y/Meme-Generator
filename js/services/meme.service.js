@@ -43,7 +43,7 @@ function getMeme() {
 
 function _crateNewMeme(memeId) {
     let isMemeExist = gMeme.find(meme => meme.selectedImgId === memeId)
-    if(isMemeExist) return
+    if (isMemeExist) return
     let newMeme = {
 
         selectedImgId: memeId,
@@ -53,23 +53,25 @@ function _crateNewMeme(memeId) {
             size: 30,
             align: 'left',
             color: 'white',
-            stroke:1,
-            pos: { x:-100, y:500},
+            stroke: 1,
+            pos: { x: -100, y: 500 },
             isDrag: false,
             isSelected: true,
-            isScaled:false,
+            isScaled: false,
             font: 'Impact'
         }],
-        elements:[
+        elements: [
             {
                 img: '',
                 size: 50,
-                pos:{
-                    x:0,
-                    y:0,
+                pos: {
+                    x: 0,
+                    y: 0,
+                    width: 50,
+                    height: 50
                 },
-                isDrag:false,
-                isSelected:false
+                isDrag: false,
+                isSelected: false
             }
         ]
 
@@ -79,3 +81,5 @@ function _crateNewMeme(memeId) {
 
 
 }
+
+

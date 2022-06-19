@@ -78,3 +78,56 @@
     width: 50px;
     aspect-ratio: 1/1;
 }
+
+
+.tab-content-others .shareMeme button {
+    background: none;
+    border: none;
+    color: #FAF9F6;
+    font-size: 1.2em;
+}
+.tab-content-others .shareMeme button:hover{
+   transform: scale(1.05);
+   cursor: pointer;
+}
+
+.tab-content-others .shareMeme span {
+    margin-top: 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-width: 100px;
+    min-height: 60px;
+    background-color: #efefef;
+    border-radius: 15px;
+}
+
+.tab-content-others .shareMeme svg{
+    padding: 1em;
+    width: 70px;
+    height: 70px;
+}
+
+
+
+.tab-content-others .shareMeme .downloadImage {
+    background: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: #efefef;
+    color: #252627;
+    font-size: 1em;
+    margin: 1em;
+    margin-inline-start: 0;
+}
+
+.tab-content-others .shareMeme .social-share{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

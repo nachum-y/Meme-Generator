@@ -5,92 +5,110 @@ var gImages =
         {
             "id": "77163",
             "src": "images/galleryMemes/1.jpg",
-            "category": "Most Popular"
+            "category": "Most Popular",
+            "keyword": ""
         },
         {
             "id": "72086",
             "src": "images/galleryMemes/2.jpg",
-            "category": "Animals"
+            "category": "Animals",
+            "keyword": "Dog"
         },
         {
             "id": "09515",
             "src": "images/galleryMemes/3.jpg",
-            "category": "Funny"
+            "category": "Funny",
+            "keyword": ""
         },
         {
             "id": "08094",
             "src": "images/galleryMemes/4.jpg",
-            "category": "Animals"
+            "category": "Animals",
+            "keyword": ""
         },
         {
             "id": "75365",
             "src": "images/galleryMemes/5.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": "",
         },
         {
             "id": "03522",
             "src": "images/galleryMemes/6.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": "",
         },
         {
             "id": "48436",
             "src": "images/galleryMemes/7.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": "Akward"
         },
         {
             "id": "11991",
             "src": "images/galleryMemes/8.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": "Akward"
         },
         {
             "id": "83682",
             "src": "images/galleryMemes/9.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": ""
         },
         {
             "id": "95459",
             "src": "images/galleryMemes/10.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": ""
         },
         {
             "id": "98630",
             "src": "images/galleryMemes/11.jpg",
-            "category": "Most Popular"
+            "category": "Most Popular",
+            "keyword": ""
         },
         {
             "id": "78755",
             "src": "images/galleryMemes/12.jpg",
-            "category": "Most Popular"
+            "category": "Most Popular",
+            "keyword": ""
         },
         {
             "id": "69985",
             "src": "images/galleryMemes/13.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": ""
         },
         {
             "id": "78374",
             "src": "images/galleryMemes/14.jpg",
-            "category": "Most Popular"
+            "category": "Most Popular",
+            "keyword": ""
         },
         {
             "id": "32070",
             "src": "images/galleryMemes/15.jpg",
-            "category": "Peoples"
+            "category": "Peoples",
+            "keyword": ""
         },
         {
             "id": "99923",
             "src": "images/galleryMemes/16.jpg",
-            "category": "Funny"
+            "category": "Funny",
+            "keyword": "TV Show"
         },
         {
             "id": "27186",
             "src": "images/galleryMemes/17.jpg",
-            "category": "Funny"
+            "category": "Funny",
+            "keyword": "TV Show"
         },
         {
             "id": "68136",
             "src": "images/galleryMemes/18.jpg",
-            "category": "Funny"
+            "category": "Funny",
+            "keyword": "TV Show"
         }
     ]
 
@@ -114,10 +132,9 @@ function nextPage() {
 function getImages() {
     var images = gImages.filter(
         (image) =>
-            image.category.toLowerCase().includes(gFilterBy.category.toLowerCase()) 
+            image.category.toLowerCase().includes(gFilterBy.category.toLowerCase()) || image.keyword.toLowerCase().includes(gFilterBy.keyword.toLowerCase())
     )
     const startIdx = gPageIdx * PAGE_SIZE
-    // images = images.slice(startIdx, startIdx + PAGE_SIZE)
     return images
 }
 
@@ -131,7 +148,7 @@ function addImage(imgSrc, category) {
 }
 
 
-function setSearchKeyWord(keyWord){
+function setSearchKeyWord(keyWord) {
     let elSearchInput = document.querySelector('.search-meme-input')
     elSearchInput.value = keyWord
     onSetFilterByTxt(keyWord)
@@ -165,6 +182,8 @@ function _createImages() {
 
 function setImagesFillter(input) {
     gFilterBy.category = input
+    gFilterBy.keyword = input
+
     return gFilterBy
 }
 

@@ -1,5 +1,5 @@
 /* MOBILE ONLY */
-@media (max-width: 750px) {
+@media (max-width: 849px) {
 
     .main-container.minimize-side-bar {
         left: 0;
@@ -180,7 +180,7 @@
 
 
 /* SMALL */
-@media (min-width: 750px) {
+@media (min-width: 850px) {
     .main-container {
         top: 46px;
     }

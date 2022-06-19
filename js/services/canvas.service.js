@@ -48,6 +48,11 @@ function moveShape(meme, x, y) {
     renderCanvas()
 }
 
+function setPropElement(selctedEl, key, val) {
+    console.log(key)
+    selctedEl[key] = val
+
+}
 
 function getEvPos(ev) {
 
@@ -138,8 +143,8 @@ function setSquareAroundElement(meme) {
         elSquareAround.style.visibility = 'visible'
         elSquareAround.style.fontSize = `${meme.size}px`
         elSquareAround.style.position = 'absolute'
-        elSquareAround.style.top = `${meme.pos.y - meme.size/2}px`
-        elSquareAround.style.left = `${meme.pos.x - meme.size/2 }px`
+        elSquareAround.style.top = `${meme.pos.y - meme.size / 2}px`
+        elSquareAround.style.left = `${meme.pos.x - meme.size / 2}px`
         elSquareAround.style.width = `${meme.size}px`
         elSquareAround.style.height = `${meme.size}px`
         // elSquareAround.style.transform = `translate(${-meme.size / 2}px, 0px)`
@@ -213,6 +218,8 @@ function setNewElementSticker(img, x, y) {
         pos: {
             x,
             y,
+            width: 50,
+            height: 50
         },
         isDrag: false,
         isSelected: false
@@ -269,7 +276,7 @@ function getOffsetSize() {
 }
 
 function resizeDrageElement(meme, dx, dy) {
-    if(meme.img){
+    if (meme.img) {
         if (dx <= meme.pos.x) {
             meme.size -= 1
         }
@@ -304,4 +311,42 @@ function clearAllSelectedElements() {
     let meme = getMeme()
     meme.lines.forEach(meme => meme.isSelected = false)
     meme.elements.forEach(meme => meme.isSelected = false)
+}
+
+
+
+
+function SetLineELement(selectedMeme, elKey, dir) {
+
+    console.log(selectedMeme)
+    console.log(elKey)
+    console.log(dir)
+
+    switch (dir) {
+        case 'up':
+            selectedMeme[elKey].y = 0 + selectedMeme.pos.height
+            break
+        case 'center':
+            selectedMeme[elKey].x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
+            selectedMeme[elKey].y = gCanvas.height / 2
+            break
+        case 'down':
+            selectedMeme[elKey].y = gCanvas.height - selectedMeme.size / 2
+            break
+        case 'right':
+            selectedMeme[elKey].x = gCanvas.width - selectedMeme.pos.width / 2 - selectedMeme.size / 2
+            break
+        case 'left':
+            selectedMeme[elKey].x = 0 + selectedMeme.pos.width / 2 + selectedMeme.size / 2
+            break
+        case 'lineCenter':
+            selectedMeme[elKey].x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
+            break
+        default:
+            break
+    }
+
+
+
+
 }

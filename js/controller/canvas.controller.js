@@ -20,18 +20,22 @@ function setCanvas(meme) {
     gImg.src = image.src//send a network req to get that image, define the img src
     gImg.onload = () => {
         let { offsetWidth, offsetHeight } = getOffsetSize()
-        if ((windowWidth - 380) / offsetHeight <= 1) {
-
+        console.log(offsetHeight)
+        console.log('offsetWidth:', offsetWidth)
+        console.log(offsetWidth / offsetHeight)
+        if ((windowWidth) / offsetHeight <= 1.3) {
+            console.log(1)
             gCanvas.width = windowWidth - 480
             // gCanvas.width = offsetWidth
             gCanvas.height = gCanvas.width
-            if ((windowWidth - 380) < 750) {
+            if ((offsetWidth) < 850) {
                 gCanvas.width = windowWidth - 100
 
                 gCanvas.height = gCanvas.width
             }
 
         } else {
+            console.log(2)
             gCanvas.width = offsetHeight - 100
             gCanvas.height = gCanvas.width
 
@@ -199,42 +203,15 @@ function onTextChange(el) {
 }
 
 
-function onSelectFont(select) {
+function onChangeSize(key) {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
-    selectedMeme.font = select
-    renderCanvas()
-
-}
-
-function onColorChange(el) {
-    // el.value = el.color
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.color = el.value
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-}
-
-function onEnlargeElement(el) {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.size += 1
+    let val = parseInt(key.dataset.val)
+    let elKey = key.dataset.key
+    selectedMeme[elKey] += val
     updateTopEditPanel(selectedMeme)
     setSquareAroundElement(selectedMeme)
     renderCanvas()
-
-}
-
-function onReduceElement(el) {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    if (selectedMeme.size <= 5) return
-    selectedMeme.size -= 1
-    updateTopEditPanel(selectedMeme)
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-
 }
 
 
@@ -247,58 +224,29 @@ function onRemoveElement(el) {
 }
 
 
-function onlineUpElement(el) {
+function onSetLineELement(key){
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
-    selectedMeme.pos.y = 0 + selectedMeme.pos.height
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-
-}
-
-function onlineDownElement(el) {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.pos.y = gCanvas.height
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-
-}
-
-function onlineCenterElement() {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.pos.x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
-    selectedMeme.pos.y = gCanvas.height / 2
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-}
-
-function onAlignRightElement(el) {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.pos.x = gCanvas.width - selectedMeme.pos.width / 2 - selectedMeme.size
-    setSquareAroundElement(selectedMeme)
-    renderCanvas()
-}
-
-function onAlignLeftElement(el) {
-    let selectedMeme = getSelectedMeme()
-    if (!selectedMeme) return
-    selectedMeme.pos.x = 0 + selectedMeme.pos.width / 2 + selectedMeme.size
+    let dir = key.dataset.direction
+    let elKey = key.dataset.key
+    SetLineELement(selectedMeme, elKey, dir)
     setSquareAroundElement(selectedMeme)
     renderCanvas()
 }
 
 
-function onAlignCenterElement(el) {
+
+function onPropElement(key) {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
-    selectedMeme.pos.x = gCanvas.width / 2 - selectedMeme.pos.width / 2 + selectedMeme.size * 2
-    setSquareAroundElement(selectedMeme)
+    let val = key.value
+    let elKey = key.dataset.key
+    setPropElement(selectedMeme, elKey, val)
     renderCanvas()
-}
 
+
+
+}
 
 
 function onAddElement(el, size, stroke) {
@@ -349,3 +297,9 @@ function onTxtStroke() {
     renderCanvas()
 
 }
+
+
+function getCanvas(){
+    return gCanvas
+}
+

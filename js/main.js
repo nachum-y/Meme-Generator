@@ -7,14 +7,11 @@ function init() {
 
 
 
-function onLangBtnClick() {
-
-}
 
 
 function colorPickerClick() {
     let color = document.getElementById("font-color-button").click()
-}
+}///try use labal instead
 
 
 function setActiveSideBar(page) {
@@ -26,7 +23,7 @@ function setActiveSideBar(page) {
     if (page === 'gellery-page') {
         elSideBar.querySelector('.sidebar-navigation-content').classList.add('hide')
         let activeTab = elSideBar.querySelector('.active')
-        if(activeTab) activeTab.classList.remove('active')
+        if (activeTab) activeTab.classList.remove('active')
         elSideBar.querySelector('.all-memes-tab').classList.add('active')
         elSideBar.classList.add('nav-home-page')
         elMainContainer.classList.add('close')
@@ -34,7 +31,7 @@ function setActiveSideBar(page) {
         elTopNavEdit.classList.add('hide')
         elSideBar.querySelector('.sidebar-navigation-content').classList.remove('minimize-side-bar')
         elMainContainer.classList.remove('minimize-side-bar')
-        
+
 
     }
     if (page === 'meme-page') {
@@ -47,9 +44,7 @@ function setActiveSideBar(page) {
         elMainContainer.classList.remove('minimize-side-bar')
         elSideBar.classList.remove('nav-home-page')
         elMainContainer.classList.add('meme-page')
-        
+
 
     }
 }
-
-
