@@ -132,7 +132,7 @@ function nextPage() {
 function getImages() {
     var images = gImages.filter(
         (image) =>
-            image.category.toLowerCase().includes(gFilterBy.category.toLowerCase()) || image.keyword.toLowerCase().includes(gFilterBy.keyword.toLowerCase())
+            image.category.toLowerCase().includes(gFilterBy.keyword.toLowerCase()) || image.keyword.toLowerCase().includes(gFilterBy.keyword.toLowerCase())
     )
     const startIdx = gPageIdx * PAGE_SIZE
     return images
@@ -140,12 +140,13 @@ function getImages() {
 
 
 
-function addImage(imgSrc, category) {
-    const img = _createImages(imgSrc, category)
+function addImage(imgSrc) {
+    const img = _createImagesfromUpload(imgSrc)
     gImages.unshift(img)
-    _saveImageToStorage()
-    return img
+    _saveImageToStorage()  
+    return(img);
 }
+
 
 
 function setSearchKeyWord(keyWord) {
@@ -155,7 +156,16 @@ function setSearchKeyWord(keyWord) {
 
 
 }
+function _createImagesfromUpload(imgSrc, category='Upload',keyword=''){
 
+    return {
+        id: makeId(5),
+        src: imgSrc,
+        category,
+        keyword
+    }
+
+}
 
 function _ctrateImage(category, idImg) {
     return {
@@ -170,18 +180,15 @@ function _createImages() {
     // Nothing in storage - generate demo data
     if (!images || !images.length) {
         images = []
-
         for (let i = 0; i < 18; i++) {
             var category = gCategory[getRandomIntInclusive(0, gCategory.length - 1)]
             images.push(_ctrateImage(category, i + 1))
         }
     }
-    // gImages = images
     _saveImageToStorage()
 }
 
 function setImagesFillter(input) {
-    gFilterBy.category = input
     gFilterBy.keyword = input
 
     return gFilterBy

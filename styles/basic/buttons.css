@@ -16,3 +16,8 @@
     width: 20px;
     height: 20;
 }
+
+.file-input-img {
+    opacity: 0;
+    width: 0;
+}

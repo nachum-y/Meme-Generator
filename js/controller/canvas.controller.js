@@ -219,12 +219,13 @@ function onRemoveElement(el) {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
     selectedMeme.txt = ''
+    selectedMeme.img = ''
     setSquareAroundElement(selectedMeme)
     renderCanvas()
 }
 
 
-function onSetLineELement(key){
+function onSetLineELement(key) {
     let selectedMeme = getSelectedMeme()
     if (!selectedMeme) return
     let dir = key.dataset.direction
@@ -299,7 +300,7 @@ function onTxtStroke() {
 }
 
 
-function getCanvas(){
+function getCanvas() {
     return gCanvas
 }
 

@@ -47,6 +47,11 @@ function renderSideNavContent(el) {
         elContent.classList.remove('hide')
         strHtmls = getHtmls('Elements')
     }
+    if (elText.innerText === 'Upload') {
+        elContentMain.classList.add('hide')
+        elContent.classList.remove('hide')
+        strHtmls = getHtmls('Upload')
+    }
 
     elContent.innerHTML = strHtmls
 

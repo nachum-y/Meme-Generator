@@ -12,8 +12,7 @@ function saveWhats() {
         //Create a link that on click will make a post in facebook with the image we uploaded
         let shareToWhatsapp = document.querySelector('.share-to-whatsapp')
         let link = `whatsapp://send?text=${encodedUploadedImgUrl}`
-        // shareToWhatsapp.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
-        // shareToWhatsapp.target = '_blank'
+        
         window.open(link, '_blank')
 
     }
@@ -91,6 +90,8 @@ function doUploadImg(imgDataUrl, onSuccess) {
 
 
 
-
-
-
+function renderImg(img){
+    const meme = addImage(img.src)
+    console.log(meme);
+    renderImagesGallery()
+}

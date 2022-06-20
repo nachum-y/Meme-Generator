@@ -116,6 +116,15 @@ function getHtmls(el) {
         
         `
             break
+
+        case 'Upload':
+            elBack = `
+                <label class="uploud-meme hero-btn" href="#">Upload
+                    <input type="file" class="file-input-img btn" name="image" onchange="onImgInput(event)" />
+                </label>
+                
+                `
+            break
         default:
             break
     }

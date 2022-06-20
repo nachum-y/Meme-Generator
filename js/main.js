@@ -14,6 +14,7 @@ function colorPickerClick() {
 }///try use labal instead
 
 
+
 function setActiveSideBar(page) {
     let elSideBar = document.querySelector('.sidebar-nav')
     let elHeroContent = document.querySelector('.hero-content')
